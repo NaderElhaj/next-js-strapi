@@ -1,0 +1,38 @@
+# fly.toml app configuration file generated for mytaverse-website-minio on 2023-07-12T12:01:23+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "RENAME_ME-website-minio"
+primary_region = "cdg"
+
+# The minio API
+[http_service]
+  internal_port = 9000
+  force_https = false
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+
+# The minio console
+[[services]]
+  internal_port = 9001
+  protocol = "tcp"
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  [[services.ports]]
+    port = 9001
+  [[services.http_checks]]
+    interval = "30s"
+    grace_period = "10s"
+    method = "GET"
+    path = "/minio/health/live"
+    protocol = "http"
+    restart_limit = 0
+    timeout = "5s"
+    tls_skip_verify = false
+
+[mounts]
+source="RENAME-ME_website_minio_data"
+destination="/data"

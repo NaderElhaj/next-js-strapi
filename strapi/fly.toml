@@ -1,0 +1,27 @@
+# fly.toml app configuration file generated for myta-strapi on 2023-05-25T16:08:01+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+primary_region = "cdg"
+
+[http_service]
+  internal_port = 1337
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machine_running = 1
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 200
+    hard_limit = 250
+
+[checks]
+  [checks.http_check]
+    grace_period = "30s"
+    interval = "15s"
+    method = "head"
+    path = "/_health"
+    port = 1337
+    timeout = "10s"
+    type = "http"
