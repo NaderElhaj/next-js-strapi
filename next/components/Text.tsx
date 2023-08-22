@@ -1,32 +1,13 @@
 import { classNames } from "@/utils";
 
-export type fontFamilys = "lausanne";
+export type fontFamilys = "lausanne" | "everett";
 
-export type fontColors = "primary" | "grey" | "black" | "white";
+export type fontColors = "primary" | "green" | "grey" | "black" | "white";
 export type fontSizess = "h1" | "h2" | "h3" | "h4" | "p";
-export type fontWeights =
-  | "thin"
-  | "light"
-  | "regular"
-  | "medium"
-  | "demibold"
-  | "bold"
-  | "extrabold"
-  | "heavy";
 
 const fontFamilies: Record<fontFamilys, string> = {
   lausanne: "font-lausanne",
-};
-
-const fontVariants: Record<fontWeights, string> = {
-  thin: "font-[100]",
-  light: "font-[200] ",
-  regular: "font-[400] ",
-  medium: "font-[500] ",
-  demibold: "font-[600] ",
-  bold: "font-[700] ",
-  extrabold: "font-[800] ",
-  heavy: "font-[900]",
+  everett: " font-everett",
 };
 
 const fontSizes: Record<fontSizess, string> = {
@@ -39,6 +20,7 @@ const fontSizes: Record<fontSizess, string> = {
 
 const fontColorss: Record<fontColors, string> = {
   primary: "text-primary",
+  green: "text-primary",
   grey: "text-grey",
   black: "text-[black]",
   white: "text-[white]",
@@ -47,8 +29,8 @@ const fontColorss: Record<fontColors, string> = {
 interface Props {
   as?: fontSizess;
   fontColor?: fontColors;
-  fontFamily?: fontFamilys;
-  fontWeight?: fontWeights;
+  fontFamily?: "lausanne" | "everett";
+  bold?: boolean;
   oblique?: boolean;
   className?: string;
   children: string;
@@ -57,9 +39,9 @@ interface Props {
 export default function Text({
   as = "p",
   fontFamily = "lausanne",
-  fontWeight = "regular",
   fontColor = "black",
   oblique,
+  bold,
   className,
   children,
 }: Props) {
@@ -68,9 +50,9 @@ export default function Text({
     <T
       className={classNames(
         fontSizes[as],
-        fontVariants[fontWeight],
         fontFamilies[fontFamily],
         fontColorss[fontColor],
+        bold && "font-bold",
         oblique && "italic",
         className,
       )}

@@ -8,9 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["var(--font-lausanne)", "sans-serif"],
-        body: ["var(--font-lausanne)", "sans-serif"],
         lausanne: ["var(--font-lausanne)"],
+        everett: ["var(--font-everett)"],
       },
       screens: {
         desktop: { min: "1321px" },

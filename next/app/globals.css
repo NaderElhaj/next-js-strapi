@@ -2,26 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+
+ /* Everett font family integration */
+ @font-face {
+  font-family: "Everett";
+  src: url("../public/fonts/Everett-Regular.otf") format("otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Lausanne font family integration */
+@font-face {
+  font-family: "Lausanne";
+  src: url("../public/fonts/Lausanne-Regular.otf") format("otf");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --font-everett: "Everett", sans-serif;
+  --font-lausanne: "Lausanne", sans-serif;
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.font-everett {
+  font-family: 'Everett', sans-serif;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.font-lausanne {
+  font-family: 'Lausanne', sans-serif;
 }
